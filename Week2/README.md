@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Pré-processamento de dados em Python
 
 Neste desafio vamos praticar a manipulação de dados utilizando
