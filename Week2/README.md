@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Pré-processamento de dados em Python
 
 Neste desafio vamos praticar a manipulação de dados utilizando
@@ -51,3 +52,7 @@ Quando finalizado, você pode desativar o ambiente virtual do virtualenv com:
 ```bash
 $ deactivate
 ```
+=======
+# Aceleradev-Data-Science
+Repository to store the weekly challanges of acelaradev from codenation.
+>>>>>>> b1ce557c4bd80e103a9744cd45caf48dd368db18
