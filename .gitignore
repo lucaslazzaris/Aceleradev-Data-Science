@@ -1,6 +1,7 @@
 # xlm
 *.xlm
-*__pycache__
+__pycache__
+.ipynb_checkpoints
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
