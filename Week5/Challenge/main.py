@@ -11,7 +11,7 @@
 
 # ## _Setup_ geral
 
-# In[1]:
+# In[2]:
 
 
 import pandas as pd
@@ -21,7 +21,7 @@ import scipy.stats as sct
 import seaborn as sns
 
 
-# In[2]:
+# In[3]:
 
 
 #%matplotlib inline
@@ -89,59 +89,66 @@ athletes.head()
 athletes.describe()
 
 
-# In[14]:
+# In[8]:
 
 
 athletes.info()
 
 
-# In[21]:
+# In[9]:
 
 
 sns.distplot(get_sample(athletes, 'height', 3000), bins=25)
 
 
-# In[44]:
+# In[10]:
 
 
 res = sct.probplot(get_sample(athletes, 'height', 3000), plot=plt)
 
 
-# In[46]:
+# In[11]:
 
 
 sns.distplot(get_sample(athletes, 'weight', 3000), bins=25)
 
 
-# In[49]:
+# In[12]:
 
 
 res = sct.probplot(get_sample(athletes, 'weight', 3000), plot=plt)
 
 
-# In[55]:
+# In[13]:
 
 
 sns.boxplot(get_sample(athletes, 'weight', 3000))
 
 
-# In[57]:
+# In[14]:
 
 
 weight_log_transformed = np.log(get_sample(athletes, 'weight', 3000))
 sns.distplot(weight_log_transformed)
 
 
+# In[15]:
+
+
+sample_height = get_sample(athletes, 'height', 3000)
+sample_weight = get_sample(athletes, 'weight', 3000)
+
+
 # ## Questão 1
 # 
 # Considerando uma amostra de tamanho 3000 da coluna `height` obtida com a função `get_sample()`, execute o teste de normalidade de Shapiro-Wilk com a função `scipy.stats.shapiro()`. Podemos afirmar que as alturas são normalmente distribuídas com base nesse teste (ao nível de significância de 5%)? Responda com um boolean (`True` ou `False`).
 
-# In[37]:
+# In[16]:
 
 
 def q1():
     # Retorne aqui o resultado da questão 1.
-    p_value = sct.shapiro(get_sample(athletes, 'height', 3000))[1]
+    p_value = sct.shapiro(sample_height)[1]
     return bool(p_value > 0.05)
 
 
@@ -155,11 +162,11 @@ def q1():
 # 
 # Repita o mesmo procedimento acima, mas agora utilizando o teste de normalidade de Jarque-Bera através da função `scipy.stats.jarque_bera()`. Agora podemos afirmar que as alturas são normalmente distribuídas (ao nível de significância de 5%)? Responda com um boolean (`True` ou `False`).
 
-# In[40]:
+# In[19]:
 
 
 def q2():
-    p_value = sct.jarque_bera(get_sample(athletes, 'height', 3000))[1]
+    p_value = sct.jarque_bera(sample_height)[1]
     return bool(p_value > 0.05)
 
 
@@ -171,11 +178,11 @@ def q2():
 # 
 # Considerando agora uma amostra de tamanho 3000 da coluna `weight` obtida com a função `get_sample()`. Faça o teste de normalidade de D'Agostino-Pearson utilizando a função `scipy.stats.normaltest()`. Podemos afirmar que os pesos vêm de uma distribuição normal ao nível de significância de 5%? Responda com um boolean (`True` ou `False`).
 
-# In[53]:
+# In[21]:
 
 
 def q3():
-    p_value = sct.normaltest(get_sample(athletes, 'weight', 3000))[1]
+    p_value = sct.normaltest(sample_weight)[1]
     return bool(p_value > 0.05)
 
 
@@ -188,11 +195,11 @@ def q3():
 # 
 # Realize uma transformação logarítmica em na amostra de `weight` da questão 3 e repita o mesmo procedimento. Podemos afirmar a normalidade da variável transformada ao nível de significância de 5%? Responda com um boolean (`True` ou `False`).
 
-# In[54]:
+# In[23]:
 
 
 def q4():
-    weight_log_transformed = np.log(get_sample(athletes, 'weight', 3000))
+    weight_log_transformed = np.log(sample_weight)
     p_value = sct.normaltest(weight_log_transformed)[1]
     return bool(p_value > 0.05)
 
